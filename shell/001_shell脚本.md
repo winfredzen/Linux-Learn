@@ -67,15 +67,19 @@ export PATH=~/bin:"$PATH"
 
 > 这个点（`.`）命令是 `source` 命令的同义词，一个 shell 内建命令，用来读取一个指定的 shell 命令文件， 并把它看作是从键盘中输入的一样。
 
+![001](https://github.com/winfredzen/Linux-Learn/blob/main/shell/images/001.png)
 
 
 
+将脚本移动到`/home/wz/bin`目录下，然后在`/home/wz`目录下，直接输入`hello_world`，就可以运行脚本了
+
+![002](https://github.com/winfredzen/Linux-Learn/blob/main/shell/images/002.png)
 
 
 
+**脚本文件放在哪里？**
 
-
-
+> 如果我们编写了一个脚本，系统中的每个用户都可以使用它， 那么这个脚本的传统位置是 `/usr/local/bin`。系统管理员使用的脚本经常放到 `/usr/local/sbin` 目录下。 大多数情况下，本地支持的软件，不管是脚本还是编译过的程序，都应该放到 `/usr/local` 目录下， 而不是在 `/bin` 或 `/usr/bin` 目录下。这些目录都是由 Linux 文件系统层次结构标准指定，只包含由 Linux 发行商 所提供和维护的文件。
 
 
 
