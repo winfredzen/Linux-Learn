@@ -18,3 +18,4 @@ Linux命令：
 + [Linux命令大全](https://man.linuxde.net/)
 + [Linux命令大全(手册)](https://www.linuxcool.com/)
 
++ [https://wangchujiang.com/linux-command/](https://wangchujiang.com/linux-command/)
