@@ -311,6 +311,147 @@ add_library(calc STATIC ${SRC_LIST})
 
 
 
+## 包含库文件
+
+如下的目录：
+
+![006](./images/006.png)
+
+
+
+### 链接静态库
+
+```cmake
+link_libraries(<static lib> [<static lib>...])
+```
+
++ 参数1：指定出要链接的静态库的名字
+
+  + 可以是全名 `libxxx.a`
+
+  + 也可以是掐头（lib）去尾（.a）之后的名字 `xxx`
+
++ 参数2-N：要链接的其它静态库的名字
+
+
+
+如果该静态库不是系统提供的（自己制作或者使用第三方提供的静态库）可能出现静态库找不到的情况，此时可以将静态库的路径也指定出来：
+
+```cmake
+link_directories(<lib path>)
+```
+
+
+
+如下的例子，如果不指定`link_directories`，则会有如下的提示：
+
+![007](./images/007.png)
+
+
+
+修改后如下：
+
+```cmake
+# 链接静态库
+link_libraries(calc)
+link_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib1)
+```
+
+
+
+### 链接动态库
+
+```cmake
+target_link_libraries(
+    <target> 
+    <PRIVATE|PUBLIC|INTERFACE> <item>... 
+    [<PRIVATE|PUBLIC|INTERFACE> <item>...]...)
+```
+
+
+
++ `target`：指定要加载动态库的文件的名字
+
+  + 该文件可能是一个源文件
+
+  + 该文件可能是一个动态库文件
+  + 该文件可能是一个可执行文件
+
+
+
++ `PRIVATE|PUBLIC|INTERFACE`：动态库的访问权限，默认为PUBLIC
+
+> 如果各个动态库之间没有依赖关系，无需做任何设置，三者没有没有区别，一般无需指定，使用默认的 `PUBLIC` 即可。
+>
+> 动态库的链接具有传递性，如果动态库 A 链接了动态库B、C，动态库D链接了动态库A，此时动态库D相当于也链接了动态库B、C，并可以使用动态库B、C中定义的方法。
+>
+> ```cmake
+> target_link_libraries(A B C)
+> target_link_libraries(D A)
+> ```
+>
+> + `PUBLIC`：在public后面的库会被Link到前面的target中，并且里面的符号也会被导出，提供给第三方使用。
+> + `PRIVATE`：在private后面的库仅被link到前面的target中，并且终结掉，第三方不能感知你调了啥库
+> + `INTERFACE`：在interface后面引入的库不会被链接到前面的target中，只会导出符号。
+
+
+
+在cmake中指定要链接的动态库的时候，**应该将命令写到生成了可执行文件之后**：
+
+```cmake
+cmake_minimum_required(VERSION 3.0)
+project(TEST)
+file(GLOB SRC_LIST ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
+# 添加并指定最终生成的可执行程序名
+add_executable(app ${SRC_LIST})
+# 指定可执行程序要链接的动态库名字
+target_link_libraries(app pthread)
+```
+
+
+
+在`target_link_libraries(app pthread)`中：
+
++ `app`: 对应的是最终生成的可执行程序的名字
++ `pthread`：这是可执行程序要加载的动态库，这个库是系统提供的线程库，全名为`libpthread.so`，在指定的时候一般会掐头（`lib`）去尾（.so）。
+
+
+
+
+#### 链接第三方动态库
+
+在 CMake 中可以在生成可执行程序之前，通过命令指定出要链接的动态库的位置，指定静态库位置使用的也是这个命令
+
+```cmake
+link_directories(path)
+```
+
+所以修改之后的`CMakeLists.txt`文件应该是这样的：
+
+```cmake
+cmake_minimum_required(VERSION 3.0)
+project(TEST)
+file(GLOB SRC_LIST ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
+# 指定源文件或者动态库对应的头文件路径
+include_directories(${PROJECT_SOURCE_DIR}/include)
+# 指定要链接的动态库的路径
+link_directories(${PROJECT_SOURCE_DIR}/lib)
+# 添加并生成一个可执行程序
+add_executable(app ${SRC_LIST})
+# 指定要链接的动态库
+target_link_libraries(app pthread calc)
+```
+
+
+
+> **使用 `target_link_libraries` 命令就可以链接动态库，也可以链接静态库文件。**
+
+
+
+
+
+
+
 
 
 
