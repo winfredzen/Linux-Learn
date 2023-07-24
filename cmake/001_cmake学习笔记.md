@@ -40,6 +40,49 @@ make
 
 
 
+## 目录变更后
+
+修改目录，将`*.c`文件移入src，将`*.h`文件移动到include目录下
+
+此时make时就会有如下的提示：
+
+![004](./images/004.png)
+
+原因是：头文件搜索是从当前目录下找的，而在src目录下是没有这个头文件的，头文件是在include下的
+
+可指定头文件路径:
+
+```cmake
+# 指定头文件路径
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
