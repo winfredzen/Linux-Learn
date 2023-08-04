@@ -7,6 +7,9 @@
 主要配置参考：
 
 + [Setup OpenGL Development with Clion on MacOS](https://broadgeek.com/2021/01/12/2236/)
++ [MacOS 搭建 OpenGL 开发环境](https://cloud.tencent.com/developer/article/2071165)
+
+
 
 
 

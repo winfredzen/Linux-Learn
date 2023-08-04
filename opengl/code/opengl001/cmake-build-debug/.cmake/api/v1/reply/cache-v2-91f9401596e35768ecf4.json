@@ -747,7 +747,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : ""
+			"value" : "arm64"
 		},
 		{
 			"name" : "CMAKE_OSX_DEPLOYMENT_TARGET",
@@ -1072,6 +1072,18 @@
 			],
 			"type" : "FILEPATH",
 			"value" : "/Library/Developer/CommandLineTools/usr/bin/strip"
+		},
+		{
+			"name" : "CMAKE_SYSTEM_PROCESSOR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "No help, variable specified on the command line."
+				}
+			],
+			"type" : "UNINITIALIZED",
+			"value" : "arm64"
 		},
 		{
 			"name" : "CMAKE_UNAME",
