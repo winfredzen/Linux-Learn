@@ -94,7 +94,11 @@ cmake -DCMAKE_SYSTEM_PROCESSOR=arm64 -DCMAKE_OSX_ARCHITECTURES=arm64 .
 
 ## 运行
 
-代码可参考[]()
+`cmake`之后，`make`
+
+代码可参考[opengl001](https://github.com/winfredzen/Linux-Learn/tree/main/opengl/code/opengl001)，运行效果如下：
+
+![007](./images/007.png)
 
 
 
