@@ -56,7 +56,67 @@ xcode-select --install
 
 这一步按照教程中的来
 
-但我在最后的cmake时，却提示找到系统的环境变量，后面说怎么解决
+但我在最后的cmake时，却提示找到系统的环境变量，估计是新建CLion工程是没识别到，可进行如下的配置
+
+![004](./images/004.png)
+
+
+
+## 遇到的问题
+
+1.提示`building for macOS-x86_64 but attempting to link with file built for macOS-arm64`
+
+参考：
+
++ [MacBook pro M1上手折腾日志](https://zhuanlan.zhihu.com/p/348532259)
+
++ [Mac(m1) clion编译opencv报错building for macOS-x86_64 but attempting to link with file built for macOS-ar](https://blog.csdn.net/gp18391818575/article/details/126553784)
+
+配置如下：
+
+```sh
+-DCMAKE_SYSTEM_PROCESSOR=arm64 -DCMAKE_OSX_ARCHITECTURES=arm64
+```
+
+![005](./images/005.png)
+
+
+
+也可以执行如下的cmake命令：
+
+```cmake
+cmake -DCMAKE_SYSTEM_PROCESSOR=arm64 -DCMAKE_OSX_ARCHITECTURES=arm64 .
+```
+
+![006](./images/006.png)
+
+
+
+## 运行
+
+代码可参考[]()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

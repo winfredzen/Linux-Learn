@@ -1,0 +1,3 @@
+/Users/wangzhen/Documents/GitHub/Linux-Learn/opengl/code/opengl001/cmake-build-debug/CMakeFiles/opengl001.dir
+/Users/wangzhen/Documents/GitHub/Linux-Learn/opengl/code/opengl001/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/wangzhen/Documents/GitHub/Linux-Learn/opengl/code/opengl001/cmake-build-debug/CMakeFiles/rebuild_cache.dir
