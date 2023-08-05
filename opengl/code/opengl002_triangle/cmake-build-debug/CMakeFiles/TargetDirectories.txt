@@ -1,0 +1,3 @@
+/Users/wangzhen/Documents/GitHub/Linux-Learn/opengl/code/opengl002_triangle/cmake-build-debug/CMakeFiles/opengl002_triangle.dir
+/Users/wangzhen/Documents/GitHub/Linux-Learn/opengl/code/opengl002_triangle/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/wangzhen/Documents/GitHub/Linux-Learn/opengl/code/opengl002_triangle/cmake-build-debug/CMakeFiles/rebuild_cache.dir
