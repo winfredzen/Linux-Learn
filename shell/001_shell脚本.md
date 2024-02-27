@@ -168,6 +168,31 @@ $foo
 
 > 正如我们所见到的，**shell 根本没有注意到引号**。**它把它们看作是普通的字符**。这就允许我们 在一个 here document 中可以随意的**嵌入引号**。对于我们的报告程序来说，这将是非常方便的。
 
+> 开头的 “>” 字符是包含在 PS2shell 变量中的 shell 提示符。每当我们在 shell 中键入多行语句的时候， 这个提示符就会出现。现在这个功能有点儿晦涩，但随后，当我们介绍多行编程语句时，它会派上大用场。
+
+
+
+> Here documents 可以和任意能接受标准输入的命令一块使用。在这个例子中，我们使用了 一个 here document 将一系列的命令传递到这个 ftp 程序中，为的是从一个远端 FTP 服务器中得到一个文件：
+>
+> ```shell
+> #!/bin/bash
+> # Script to retrieve a file via FTP
+> FTP_SERVER=ftp.nl.debian.org
+> FTP_PATH=/debian/dists/lenny/main/installer-i386/current/images/cdrom
+> REMOTE_FILE=debian-cd_info.tar.gz
+> ftp -n << _EOF_
+> open $FTP_SERVER
+> user anonymous me@linuxbox
+> cd $FTP_PATH
+> hash
+> get $REMOTE_FILE
+> bye
+> _EOF_
+> ls -l $REMOTE_FILE
+> ```
+
+
+
 如果我们把重定向操作符从 “`<<`” 改为 “`<<-`”，shell 会忽略在此 here document 中开头的 `tab` 字符。 这就能缩进一个 here document，从而提高脚本的可读性：
 
 ```shell
